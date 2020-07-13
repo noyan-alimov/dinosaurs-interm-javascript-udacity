@@ -1,16 +1,18 @@
 // Create Dino Constructor
 
-function Dino(species, weight, height, diet, where, when, fact) {
-  this.species = species;
-  this.weight = weight;
-  this.height = height;
-  this.diet = diet;
-  this.where = where;
-  this.when = when;
-  this.fact = fact;
-}
+// function Dino(species, weight, height, diet, where, when, fact) {
+//   this.species = species;
+//   this.weight = weight;
+//   this.height = height;
+//   this.diet = diet;
+//   this.where = where;
+//   this.when = when;
+//   this.fact = fact;
+// }
 
 // // Create Dino Objects
+
+import { Dinos } from './dino.json';
 
 // Create Human Object
 
@@ -53,10 +55,27 @@ button.addEventListener('click', function () {
   form.innerHTML = '';
 
   const grid = document.getElementById('grid');
-  const tile = document.createElement('div');
-  tile.className = 'grid-item';
-  tile.innerHTML = 'John';
-  grid.appendChild(tile);
+  Dinos.map(dino => {
+    const tile = document.createElement('div');
+    tile.className = 'grid-item';
+
+    const title = document.createElement('h3');
+    title.className = 'h3';
+    title.innerHTML = dino.species;
+
+    const fact = document.createElement('p');
+    fact.className = 'p';
+    fact.innerHTML = dino.fact;
+
+    const image = document.createElement('img');
+    image.className = 'img';
+    image.src = './images/human.png';
+
+    tile.appendChild(image);
+    tile.appendChild(fact);
+    tile.appendChild(title);
+    grid.appendChild(tile);
+  });
 });
 
 // Create Dino Compare Method 1
