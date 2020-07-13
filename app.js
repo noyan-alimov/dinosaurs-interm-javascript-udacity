@@ -1,6 +1,6 @@
 // Create Dino Constructor
 
-function Dino(species, weight, height, diet, where, when, fact, image) {
+function Dino(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
   this.height = height;
@@ -8,34 +8,56 @@ function Dino(species, weight, height, diet, where, when, fact, image) {
   this.where = where;
   this.when = when;
   this.fact = fact;
-  this.image = image;
 }
 
-// Create Dino Objects
-
-const triceratops = new Dino('Triceratops',
-                13000,
-                114,
-                'herbavor',
-                'North America',
-                'Late Cretaceous',
-                'First discovered in 1889 by Othniel Charles Marsh',
-                'triceratops.png'
-              );
-
-const trex = new Dino('Tyrannosaurus Rex',
-                11905,
-                144,
-                'carnivor',
-                'North America',
-                'Late Cretaceous',
-                'The largest known skull measures in at 5 feet long.',
-                'tyrannosaurus rex.png'
-              );
+// // Create Dino Objects
 
 // Create Human Object
 
 // Use IIFE to get human data from form
+
+const button = document.getElementById('btn');
+button.addEventListener('click', function () {
+  const human = (function () {
+    let name = document.getElementById('name').value;
+    let feet = document.getElementById('feet').value;
+    let inches = document.getElementById('inches').value;
+    let weight = document.getElementById('weight').value;
+    let diet = document.getElementById('diet').value;
+
+    function getName() {
+      return name;
+    }
+
+    function getHeight() {
+      return feet * 12 + inches;
+    }
+
+    function getWeight() {
+      return weight;
+    }
+
+    function getDiet() {
+      return diet;
+    }
+
+    return {
+      name: getName(),
+      height: getHeight(),
+      weight: getWeight(),
+      diet: getDiet()
+    };
+  })();
+
+  const form = document.getElementById('dino-compare');
+  form.innerHTML = '';
+
+  const grid = document.getElementById('grid');
+  const tile = document.createElement('div');
+  tile.className = 'grid-item';
+  tile.innerHTML = 'John';
+  grid.appendChild(tile);
+});
 
 // Create Dino Compare Method 1
 // NOTE: Weight in JSON file is in lbs, height in inches.
