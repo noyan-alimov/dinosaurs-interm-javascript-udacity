@@ -227,7 +227,7 @@ dinos.push(
 
 // Add tiles to DOM
 
-function addDinoTilesToDOM(humanName) {
+function addTilesToDOM(humanName) {
   const grid = document.getElementById('grid');
   dinos.map(dino => {
     const tile = document.createElement('div');
@@ -286,6 +286,6 @@ button.addEventListener('click', function () {
       dino.compareDiet(human.diet);
     }
   });
-  addDinoTilesToDOM(human.name);
+  addTilesToDOM(human.name);
   removeFormFromScreen();
 });
